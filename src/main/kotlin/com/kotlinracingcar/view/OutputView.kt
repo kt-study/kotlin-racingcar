@@ -1,5 +1,9 @@
 package com.kotlinracingcar.view
 
+import com.kotlinracingcar.domain.Car
+
+private const val DISTANCE_VIEW = "-"
+
 class OutputView {
 
     fun printInputCarNames(carNameRegex: String) {
@@ -12,5 +16,28 @@ class OutputView {
 
     fun printError(message: String?) {
         println("[ERROR] $message")
+    }
+
+    fun printRacingResult() {
+        println("실행 결과")
+    }
+
+    fun printCurrentRace(cars: List<Car>) {
+        for (car in cars) {
+            val carName = car.name.value
+            val carDistance = mapForDisplay(car.distance)
+
+            println("$carName : $carDistance")
+        }
+    }
+
+    private fun mapForDisplay(distance: Int): String {
+        val stringBuilder = StringBuilder()
+
+        for (i in 1..distance) {
+            stringBuilder.append(DISTANCE_VIEW)
+        }
+
+        return stringBuilder.toString()
     }
 }

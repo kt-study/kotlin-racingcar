@@ -9,26 +9,40 @@ class RacingcarGame(
 ) {
 
     fun play() {
-        val carNames = initCarNames(inputView.inputCarNames())
-        val racingLap = initRacingLap(inputView.inputRacingLap())
+        val cars = initCars()
+        val racingLap = initRacingLap()
+
+        outputView.printRacingResult()
+        while (racingLap.isContinueRacing()) {
+            cars.raceAllCars()
+            outputView.printCurrentRace(cars.values)
+            racingLap.passOneLap()
+        }
     }
 
-    private fun initCarNames(carNames: String): CarNames {
+    private fun initCars(): Cars {
+        return Cars(
+            initCarNames().values
+            .map { Car(it) }
+        )
+    }
+
+    private fun initCarNames(): CarNames {
         while (true) {
             try {
                 outputView.printInputCarNames(CarNames.REGEX)
-                return CarNames.from(carNames)
+                return CarNames.from(inputView.inputCarNames())
             } catch (e: IllegalArgumentException) {
                 outputView.printError(e.message)
             }
         }
     }
 
-    private fun initRacingLap(racingLap: String): RacingLap {
+    private fun initRacingLap(): RacingLap {
         while (true) {
             try {
                 outputView.printInputRacingLap()
-                return RacingLap.from(racingLap)
+                return RacingLap.from(inputView.inputRacingLap())
             } catch (e: IllegalArgumentException) {
                 outputView.printError(e.message)
             }
