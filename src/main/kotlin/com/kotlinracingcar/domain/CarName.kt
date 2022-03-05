@@ -1,7 +1,7 @@
 package com.kotlinracingcar.domain
 
-class CarName(
-    value: String
+data class CarName(
+    val value: String
 ) {
 
     init {
