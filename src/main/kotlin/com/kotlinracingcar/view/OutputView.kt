@@ -1,6 +1,7 @@
 package com.kotlinracingcar.view
 
 import com.kotlinracingcar.domain.Car
+import java.util.*
 
 private const val DISTANCE_VIEW = "-"
 
@@ -39,5 +40,14 @@ class OutputView {
         }
 
         return stringBuilder.toString()
+    }
+
+    fun printRacingWinners(winners: List<Car>) {
+        val stringJoiner = StringJoiner(", ")
+        for (winner in winners) {
+            stringJoiner.add(winner.name.value)
+        }
+
+        println("최종 우승자 : $stringJoiner")
     }
 }

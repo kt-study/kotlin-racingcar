@@ -18,6 +18,9 @@ class RacingcarGame(
             outputView.printCurrentRace(cars.values)
             racingLap.passOneLap()
         }
+
+        val racingResult = RacingResult(cars)
+        outputView.printRacingWinners(racingResult.getWinners())
     }
 
     private fun initCars(): Cars {
