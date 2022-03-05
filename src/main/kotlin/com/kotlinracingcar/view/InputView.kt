@@ -2,7 +2,7 @@ package com.kotlinracingcar.view
 
 class InputView {
 
-    fun inputCarsCount(): String {
+    fun inputRacingLap(): String {
         return readln()
     }
 
