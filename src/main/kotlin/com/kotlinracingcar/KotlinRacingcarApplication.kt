@@ -1,11 +1,10 @@
 package com.kotlinracingcar
 
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
+import com.kotlinracingcar.domain.RacingcarGame
 
-@SpringBootApplication
 class KotlinRacingcarApplication
 
 fun main(args: Array<String>) {
-    runApplication<KotlinRacingcarApplication>(*args)
+    val racingcarGame = RacingcarGame()
+    racingcarGame.play()
 }
